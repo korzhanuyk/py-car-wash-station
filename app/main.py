@@ -36,7 +36,9 @@ class CarWashStation:
             car.clean_mark = self.clean_power
 
     def rate_service(self, single_rate: int) -> tuple[float, int]:
-        self.average_rating = ((self.average_rating * self.count_of_ratings
-                               + single_rate) / (self.count_of_ratings + 1))
+        self.average_rating = round((self.average_rating
+                                     * self.count_of_ratings
+                                     + single_rate)
+                                    / (self.count_of_ratings + 1), 1)
         self.count_of_ratings += 1
-        return round(self.average_rating, 1), self.count_of_ratings
+        return self.average_rating, self.count_of_ratings
